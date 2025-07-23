@@ -143,142 +143,28 @@
                 <h2>Познакомьтесь с нашим инженером</h2>
             </div>
             <div class="row">
+                @foreach( $users as $user)
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-1.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>Adam Phillips</h2>
-                            <p>CEO & Founder</p>
-                        </div>
-                        <div class="team-social">
-                            <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
+
+                            <div class="team-img">
+                                <img src="{{ $user->image ? Storage::disk('public')->url($user->image->url) : '/images/default-user.png' }}" alt="User Photo">
+
+                            </div>
+                            <div class="team-text">
+                                <h2>{{ $user->first_name }}  {{$user->last_name}}</h2>
+                                <p>{{ $user->phone }}r</p>
+                            </div>
+                            <div class="team-social">
+                                <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-2.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>Dylan Adams</h2>
-                            <p>Civil Engineer</p>
-                        </div>
-                        <div class="team-social">
-                            <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-3.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>Jhon Doe</h2>
-                            <p>Дизайн интерьераer</p>
-                        </div>
-                        <div class="team-social">
-                            <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-4.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>Josh Dunn</h2>
-                            <p>Painter</p>
-                        </div>
-                        <div class="team-social">
-                            <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-1.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>Adam Phillips</h2>
-                            <p>CEO & Founder</p>
-                        </div>
-                        <div class="team-social">
-                            <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-2.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>Dylan Adams</h2>
-                            <p>Civil Engineer</p>
-                        </div>
-                        <div class="team-social">
-                            <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-3.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>Jhon Doe</h2>
-                            <p>Дизайн интерьераer</p>
-                        </div>
-                        <div class="team-social">
-                            <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-4.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>Josh Dunn</h2>
-                            <p>Painter</p>
-                        </div>
-                        <div class="team-social">
-                            <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -339,25 +225,7 @@
                 </div>
             </div>
         </div>
-       {{--        <div class="container footer-menu">--}}
-{{--            <div class="f-menu">--}}
-{{--                <a href="">Terms of use</a>--}}
-{{--                <a href="">Privacy policy</a>--}}
-{{--                <a href="">Cookies</a>--}}
-{{--                <a href="">Help</a>--}}
-{{--                <a href="">FQAs</a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="container copyright">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-6">--}}
-{{--                    <p>&copy; <a href="#">Your Site Name</a>, All Right Reserved.</p>--}}
-{{--                </div>--}}
-{{--                <div class="col-md-6">--}}
-{{--                    <p>Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+
     </div>
     <!-- Footer End -->
 

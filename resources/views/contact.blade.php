@@ -172,9 +172,10 @@
                 <div class="col-md-6">
                     <div class="contact-form">
                         <div id="success"></div>
-                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                        <form name="sentMessage" method="POST"  action="{{ route('contact') }}" id="contactForm" novalidate="novalidate">
+                            @csrf
                             <div class="control-group">
-                                <input type="text" class="form-control" id="name" placeholder="Ваше имя" required="required" data-validation-required-message="Пожалуйста, введите ваше имя" />
+                                <input type="text" class="form-control" id="name" placeholder="Ваше имя" required="required" data-validation-required-message="Пожалуйста, введите ваше имя" value="{{ old('name') }}" />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
