@@ -21,7 +21,7 @@ class NotificationController extends Controller
      */
     public function create()
     {
-
+        return view('contact');
     }
 
     /**
@@ -29,13 +29,18 @@ class NotificationController extends Controller
      */
     public function store(NotificationRequest $request)
     {
-       Notification::created([
+
+        Notification::create([
             'name' => $request->name,
             'email' => $request->email,
-            'title' =>$request->title,
-            'message' =>$request->message,
+            'title' => $request->title,
+            'message' => $request->message,
         ]);
+
+
+        return redirect()->route('notification.create')->with('success', 'Сообщение успешно отправлено!');
     }
+
 
     /**
      * Display the specified resource.

@@ -26,6 +26,6 @@ Route::controller(TeamController::class)->group(function () {
 
 
 Route::controller(NotificationController::class)->group(function () {
-   Route::get('/notification', 'index')->name('notification');
+   Route::get('/notification', 'create')->name('notification.create');
    Route::post('/notification', 'store')->name('notification.store');
 });

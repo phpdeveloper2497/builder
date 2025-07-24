@@ -99,13 +99,13 @@
                         <a href="{{ route('service') }}" class="nav-item nav-link">Услуга</a>
                         <a href="{{ route('team') }}" class="nav-item nav-link">Команда</a>
                         <a href="{{ route('index') }}" class="nav-item nav-link">Проект</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Страницы</a>
-                            <div class="dropdown-menu">
-                                <a href="{{ route('blog') }}" class="dropdown-item">Страница блога</a>
-                                <a href="{{ route('single') }}" class="dropdown-item">Одна страница</a>
-                            </div>
-                        </div>
+{{--                        <div class="nav-item dropdown">--}}
+{{--                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Страницы</a>--}}
+{{--                            <div class="dropdown-menu">--}}
+{{--                                <a href="{{ route('blog') }}" class="dropdown-item">Страница блога</a>--}}
+{{--                                <a href="{{ route('single') }}" class="dropdown-item">Одна страница</a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <a href="{{ route('contact') }}" class="nav-item nav-link">Контакт</a>
                     </div>
                     <div class="ml-auto">
@@ -172,22 +172,22 @@
                 <div class="col-md-6">
                     <div class="contact-form">
                         <div id="success"></div>
-                        <form name="sentMessage" method="POST"  action="{{ route('contact') }}" id="contactForm" novalidate="novalidate">
+                        <form name="sentMessage" method="POST"  action="{{ route('notification.store') }}" id="contactForm" novalidate="novalidate">
                             @csrf
                             <div class="control-group">
-                                <input type="text" class="form-control" id="name" placeholder="Ваше имя" required="required" data-validation-required-message="Пожалуйста, введите ваше имя" value="{{ old('name') }}" />
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Ваше имя" required="required" data-validation-required-message="Пожалуйста, введите ваше имя" value="{{ old('name') }}" />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
-                                <input type="email" class="form-control" id="email" placeholder="Ваш адрес электронной почты" required="required" data-validation-required-message="Пожалуйста, введите ваш адрес электронной почты" />
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Ваш адрес электронной почты" required="required" data-validation-required-message="Пожалуйста, введите ваш адрес электронной почты" />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
-                                <input type="text" class="form-control" id="subject" placeholder="Предмет" required="required" data-validation-required-message="Пожалуйста, введите тему" />
+                                <input type="text" class="form-control" id="title" name="title" placeholder="Предмет" required="required" data-validation-required-message="Пожалуйста, введите тему" />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
-                                <textarea class="form-control" id="message" placeholder="Сообщение" required="required" data-validation-required-message="Пожалуйста, введите ваше сообщение"></textarea>
+                                <textarea class="form-control" id="message" name="message" placeholder="Сообщение" required="required" data-validation-required-message="Пожалуйста, введите ваше сообщение"></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div>
@@ -256,27 +256,8 @@
                 </div>
             </div>
         </div>
-       {{--        <div class="container footer-menu">--}}
-{{--            <div class="f-menu">--}}
-{{--                <a href="">Terms of use</a>--}}
-{{--                <a href="">Privacy policy</a>--}}
-{{--                <a href="">Cookies</a>--}}
-{{--                <a href="">Help</a>--}}
-{{--                <a href="">FQAs</a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-    {{--        <div class="container copyright">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-6">--}}
-{{--                    <p>&copy; <a href="#">Your Site Name</a>, All Right Reserved.</p>--}}
-{{--                </div>--}}
-{{--                <div class="col-md-6">--}}
-{{--                    <p>Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-    <!-- Footer End -->
+
+
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 </div>
@@ -284,18 +265,18 @@
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/wow/wow.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="lib/isotope/isotope.pkgd.min.js"></script>
-<script src="lib/lightbox/js/lightbox.min.js"></script>
-<script src="lib/waypoints/waypoints.min.js"></script>
-<script src="lib/counterup/counterup.min.js"></script>
-<script src="lib/slick/slick.min.js"></script>
+<script src="{{ asset('lib/easing/easing.min.js') }} "></script>
+<script src="{{ asset('lib/wow/wow.min.js') }} "></script>
+<script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }} "></script>
+<script src="{{ asset('lib/isotope/isotope.pkgd.min.js') }} "></script>
+<script src="{{ asset('lib/lightbox/js/lightbox.min.js') }} "></script>
+<script src="{{ asset('lib/waypoints/waypoints.min.js') }} "></script>
+<script src="{{ asset('lib/counterup/counterup.min.js') }} "></script>
+<script src=" {{ asset('lib/slick/slick.min.js') }}"></script>
 
 <!-- Contact Javascript File -->
-<script src="mail/jqBootstrapValidation.min.js"></script>
-<script src="mail/contact.js"></script>
+{{--<script src="{{ asset('mail/jqBootstrapValidation.min.js') }}"></script>--}}
+{{--<script src="{{ asset('mail/contact.js') }}"></script>--}}
 
 <!-- Template Javascript -->
 <script src="{{ asset('js/main.js') }}"></script>
