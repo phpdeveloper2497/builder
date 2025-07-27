@@ -2,17 +2,19 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Storage;
+use Spatie\Image\Enums\Fit;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class User extends Authenticatable
+class User extends Authenticatable  implements HasMedia
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+    use InteractsWithMedia;
+
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +22,9 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'phone',
         'email',
         'password',
     ];
@@ -71,15 +75,12 @@ class User extends Authenticatable
         return $this->role === self::ROLE_EDITOR;
     }
 
-    public function image(): MorphOne
+    public function registerMediaConversions(?Media $media = null): void
     {
-        return $this->morphOne(Image::class, 'imageable');
+        $this
+            ->addMediaConversion('preview')
+            ->fit(Fit::Contain, 300, 300)
+            ->nonQueued();
     }
 
-    public function getPhotoUrlAttribute(): ?string
-    {
-        return $this->image?->url
-            ? Storage::disk('public')->url($this->image->url)
-            : null;
-    }
 }

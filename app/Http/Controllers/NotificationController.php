@@ -37,7 +37,6 @@ class NotificationController extends Controller
             'message' => $request->message,
         ]);
 
-
         return redirect()->route('notification.create')->with('success', 'Сообщение успешно отправлено!');
     }
 

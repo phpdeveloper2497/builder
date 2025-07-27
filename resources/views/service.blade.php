@@ -11,12 +11,13 @@
     <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
 
     <!-- CSS Libraries -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-   <link href="{{ asset('lib/flaticon/font/flaticon.css') }}" rel="stylesheet">
+    <link href="{{ asset('lib/flaticon/font/flaticon.css') }}" rel="stylesheet">
     <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
@@ -36,8 +37,8 @@
                 <div class="col-lg-4 col-md-12">
                     <div class="logo">
                         <a href="{{ route('index') }}">
-{{--                            <h1>АЛГОРИТМ САН</h1>--}}
-                              <img src="{{ asset('img/logo_ch.png') }}" alt="Logo">
+                            {{--                            <h1>АЛГОРИТМ САН</h1>--}}
+                            <img src="{{ asset('img/logo_ch.png') }}" alt="Logo">
                         </a>
                     </div>
                 </div>
@@ -91,7 +92,6 @@
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
                         <a href="{{ route('index') }}" class="nav-item nav-link active">ГЛАВНЫЙ</a>
@@ -99,13 +99,6 @@
                         <a href="{{ route('service') }}" class="nav-item nav-link">Услуга</a>
                         <a href="{{ route('team') }}" class="nav-item nav-link">Команда</a>
                         <a href="{{ route('index') }}" class="nav-item nav-link">Проект</a>
-{{--                        <div class="nav-item dropdown">--}}
-{{--                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Страницы</a>--}}
-{{--                            <div class="dropdown-menu">--}}
-{{--                                <a href="{{ route('blog') }}" class="dropdown-item">Страница блога</a>--}}
-{{--                                <a href="{{ route('single') }}" class="dropdown-item">Одна страница</a>--}}
-{{--                            </div>--}}
-                        </div>
                         <a href="{{ route('contact') }}" class="nav-item nav-link">Контакт</a>
                     </div>
                     <div class="ml-auto">
@@ -125,10 +118,10 @@
                 <div class="col-12">
                     <h2>Наши услуги</h2>
                 </div>
-                <div class="col-12">
-                    <a href="">ГЛАВНЫЙ</a>
-                    <a href="">Наши услуги</a>
-                </div>
+{{--                <div class="col-12">--}}
+{{--                    <a href="">ГЛАВНЫЙ</a>--}}
+{{--                    <a href="">Наши услуги</a>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>
@@ -143,102 +136,26 @@
                 <h2>Мы предоставляем услуги</h2>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-1.jpg" alt="Image">
-                            <div class="service-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                                </p>
+                @foreach($posts as $post)
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="{{ $post->getFirstMediaUrl('main') }}" alt="Image">
+                                <div class="service-overlay">
+                                    <p>
+                                        {{ $post->content }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="service-text">
+                                <h3>{{ $post->title }}</h3>
+                                <a class="btn" href="{{ $post->getFirstMediaUrl('main')  }}"
+                                   data-lightbox="service">+</a>
                             </div>
                         </div>
-                        <div class="service-text">
-                            <h3>Строительство зданий</h3>
-                            <a class="btn" href="img/service-1.jpg" data-lightbox="service">+</a>
-                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-2.jpg" alt="Image">
-                            <div class="service-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="service-text">
-                            <h3>Ремонт дома</h3>
-                            <a class="btn" href="img/service-2.jpg" data-lightbox="service">+</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-3.jpg" alt="Image">
-                            <div class="service-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="service-text">
-                            <h3>Архитектура и дизайн</h3>
-                            <a class="btn" href="img/service-3.jpg" data-lightbox="service">+</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-4.jpg" alt="Image">
-                            <div class="service-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="service-text">
-                            <h3>Дизайн интерьера</h3>
-                            <a class="btn" href="img/service-4.jpg" data-lightbox="service">+</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-5.jpg" alt="Image">
-                            <div class="service-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="service-text">
-                            <h3>Fixing & Support</h3>
-                            <a class="btn" href="img/service-5.jpg" data-lightbox="service">+</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-6.jpg" alt="Image">
-                            <div class="service-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="service-text">
-                            <h3>Рисование</h3>
-                            <a class="btn" href="img/service-6.jpg" data-lightbox="service">+</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </div>
@@ -258,60 +175,61 @@
                         <div class="card wow fadeInLeft" data-wow-delay="0.1s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseOne">
-                                    Lorem ipsum dolor sit amet?
+                                    Какие процессы в моей компании можно автоматизировать с помощью ИИ?
                                 </a>
                             </div>
                             <div id="collapseOne" class="collapse" data-parent="#accordion-1">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
                         <div class="card wow fadeInLeft" data-wow-delay="0.2s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseTwo">
-                                    Lorem ipsum dolor sit amet?
-                                </a>
+                                    Разрабатываете ли вы индивидуальные решения по автоматизации? </a>
                             </div>
                             <div id="collapseTwo" class="collapse" data-parent="#accordion-1">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
                         <div class="card wow fadeInLeft" data-wow-delay="0.3s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseThree">
-                                    Lorem ipsum dolor sit amet?
-                                </a>
+                                    Сколько времени занимает внедрение ИИ в бизнес-процессы? </a>
                             </div>
                             <div id="collapseThree" class="collapse" data-parent="#accordion-1">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
                         <div class="card wow fadeInLeft" data-wow-delay="0.4s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseFour">
-                                    Lorem ipsum dolor sit amet?
-                                </a>
+                                    Можно ли интегрировать ваши решения с нашей ERP/CRM системой? </a>
                             </div>
                             <div id="collapseFour" class="collapse" data-parent="#accordion-1">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
                         <div class="card wow fadeInLeft" data-wow-delay="0.5s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseFive">
-                                    Lorem ipsum dolor sit amet?
-                                </a>
+                                    Какие технологии ИИ вы используете в своих проектах? </a>
                             </div>
                             <div id="collapseFive" class="collapse" data-parent="#accordion-1">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
@@ -322,60 +240,79 @@
                         <div class="card wow fadeInRight" data-wow-delay="0.1s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseSix">
-                                    Lorem ipsum dolor sit amet?
+                                    Какое промышленное оборудование вы предлагаете?
+
                                 </a>
                             </div>
                             <div id="collapseSix" class="collapse" data-parent="#accordion-2">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
                         <div class="card wow fadeInRight" data-wow-delay="0.2s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseSeven">
-                                    Lorem ipsum dolor sit amet?
+                                    Есть ли у вас каталог оборудования и запасных частей?
                                 </a>
                             </div>
                             <div id="collapseSeven" class="collapse" data-parent="#accordion-2">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
                         <div class="card wow fadeInRight" data-wow-delay="0.3s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseEight">
-                                    Lorem ipsum dolor sit amet?
+                                    Осуществляете ли вы доставку и монтаж оборудования?
                                 </a>
                             </div>
                             <div id="collapseEight" class="collapse" data-parent="#accordion-2">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
                         <div class="card wow fadeInRight" data-wow-delay="0.4s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseNine">
-                                    Lorem ipsum dolor sit amet?
+                                    Как оформить оптовый заказ?
                                 </a>
                             </div>
                             <div id="collapseNine" class="collapse" data-parent="#accordion-2">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
                         <div class="card wow fadeInRight" data-wow-delay="0.5s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseTen">
-                                    Lorem ipsum dolor sit amet?
+                                    Предоставляется ли гарантия на технику и комплектующие?
                                 </a>
                             </div>
                             <div id="collapseTen" class="collapse" data-parent="#accordion-2">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card wow fadeInRight" data-wow-delay="0.5s">
+                            <div class="card-header">
+                                <a class="card-link collapsed" data-toggle="collapse" href="#collapseTen">
+                                    Какие условия для получения проектного финансирования?
+                                </a>
+                            </div>
+                            <div id="collapseTen" class="collapse" data-parent="#accordion-2">
+                                <div class="card-body">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
@@ -395,7 +332,7 @@
                     <div class="footer-contact">
                         <h2>Контакты офиса</h2>
                         <p><i class="fa fa-map-marker-alt"></i>129226, г Москва, ул
-Сельскохозяйственная, д. 17, к. 1,</p>
+                            Сельскохозяйственная, д. 17, к. 1,</p>
                         <p><i class="fa fa-phone-alt"></i>+7 (968) 533-46-760</p>
                         <p><i class="fa fa-envelope"></i>info@example.com</p>
                         <div class="footer-social">
@@ -431,7 +368,8 @@
                     <div class="Информационный бюллетень">
                         <h2>Информационный бюллетень</h2>
                         <p>
-                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu
+                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit
+                            non vulpu
                         </p>
                         <div class="form">
                             <input class="form-control" placeholder="Написать письмо здесь">
@@ -441,43 +379,24 @@
                 </div>
             </div>
         </div>
-       {{--        <div class="container footer-menu">--}}
-{{--            <div class="f-menu">--}}
-{{--                <a href="">Terms of use</a>--}}
-{{--                <a href="">Privacy policy</a>--}}
-{{--                <a href="">Cookies</a>--}}
-{{--                <a href="">Help</a>--}}
-{{--                <a href="">FQAs</a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-    {{--        <div class="container copyright">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-6">--}}
-{{--                    <p>&copy; <a href="#">Your Site Name</a>, All Right Reserved.</p>--}}
-{{--                </div>--}}
-{{--                <div class="col-md-6">--}}
-{{--                    <p>Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-    <!-- Footer End -->
 
-    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        <!-- Footer End -->
+
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/slick/slick.min.js"></script>
 </div>
-
-<!-- JavaScript Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/wow/wow.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="lib/isotope/isotope.pkgd.min.js"></script>
-<script src="lib/lightbox/js/lightbox.min.js"></script>
-<script src="lib/waypoints/waypoints.min.js"></script>
-<script src="lib/counterup/counterup.min.js"></script>
-<script src="lib/slick/slick.min.js"></script>
-
 <!-- Template Javascript -->
 <script src="{{ asset('js/main.js') }}"></script>
 </body>

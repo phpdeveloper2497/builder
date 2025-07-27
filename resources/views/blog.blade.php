@@ -99,13 +99,6 @@
                         <a href="{{ route('service') }}" class="nav-item nav-link">Service</a>
                         <a href="{{ route('team') }}" class="nav-item nav-link">Team</a>
                         <a href="{{ route('index') }}" class="nav-item nav-link">Project</a>
-{{--                        <div class="nav-item dropdown">--}}
-{{--                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>--}}
-{{--                            <div class="dropdown-menu">--}}
-{{--                                <a href="{{ route('blog') }}" class="dropdown-item">Blog Page</a>--}}
-{{--                                <a href="{{ route('single') }}" class="dropdown-item">Single Page</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
                         <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="ml-auto">

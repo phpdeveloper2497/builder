@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,6 @@ Route::controller(NotificationController::class)->group(function () {
    Route::get('/notification', 'create')->name('notification.create');
    Route::post('/notification', 'store')->name('notification.store');
 });
+
+
+Route::get('/service', [ServiceController::class, 'index'])->name('service');

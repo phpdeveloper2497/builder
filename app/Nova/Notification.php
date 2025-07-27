@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -14,7 +15,7 @@ class Notification extends Resource
      *
      * @var class-string<\App\Models\Notification>
      */
-    public static $model = \App\Models\Notification::class;
+    public static string $model = \App\Models\Notification::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -41,10 +42,12 @@ class Notification extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('name')->sortable(),
-            Text::make('email')->sortable(),
-            Text::make('title')->sortable(),
-            Text::make('message')->sortable(),
+            Text::make('имя','name')->sortable(),
+            Text::make('электронная почта','email')->sortable(),
+            Text::make('заголовок','title')->sortable(),
+            Text::make('сообщение','message')->displayUsing(function ($value) {
+                return Str::limit($value, 50);
+            })->hideFromDetail()->sortable(),
         ];
     }
 
@@ -86,6 +89,31 @@ class Notification extends Resource
     public function actions(NovaRequest $request): array
     {
         return [];
+    }
+
+    public static function label(): string
+    {
+        return 'Запросы';
+    }
+
+    /**
+     * Get the displayable singular label of the resource.
+     *
+     * @return string
+     */
+    public static function singularLabel()
+    {
+        return 'Запросы';
+    }
+
+    public static function authorizedToCreate(Request $request)
+    {
+        return false;
+    }
+
+    public function authorizedToUpdate(Request $request)
+    {
+        return false;
     }
 
 }

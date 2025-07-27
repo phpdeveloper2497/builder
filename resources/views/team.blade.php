@@ -99,13 +99,6 @@
                         <a href="{{ route('service') }}" class="nav-item nav-link">Услуга</a>
                         <a href="{{ route('team') }}" class="nav-item nav-link">Команда</a>
                         <a href="{{ route('index') }}" class="nav-item nav-link">Проект</a>
-{{--                        <div class="nav-item dropdown">--}}
-{{--                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Страницы</a>--}}
-{{--                            <div class="dropdown-menu">--}}
-{{--                                <a href="{{ route('blog') }}" class="dropdown-item">Страница блога</a>--}}
-{{--                                <a href="{{ route('single') }}" class="dropdown-item">Одна страница</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
                         <a href="{{ route('contact') }}" class="nav-item nav-link">Контакт</a>
                     </div>
                     <div class="ml-auto">
@@ -148,12 +141,13 @@
                     <div class="team-item">
 
                             <div class="team-img">
-                                <img src="{{ $user->image ? Storage::disk('public')->url($user->image->url) : '/images/default-user.png' }}" alt="User Photo">
+                                <img src="{{ $user->getFirstMediaUrl('main')}}" alt="User Photo">
 
                             </div>
                             <div class="team-text">
                                 <h2>{{ $user->first_name }}  {{$user->last_name}}</h2>
-                                <p>{{ $user->phone }}r</p>
+                                <p>{{ $user->email}}</p>
+                                <p>{{ $user->phone }}</p>
                             </div>
                             <div class="team-social">
                                 <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
