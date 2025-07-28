@@ -2,10 +2,13 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\DateTime;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
+
 
 class Post extends Resource
 {
@@ -16,7 +19,7 @@ class Post extends Resource
      */
     public static $model = \App\Models\Post::class;
 
-
+//    public static $perPageOptions = [30];
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -32,6 +35,7 @@ class Post extends Resource
      */
     public static $search = [
         'id',
+        'title'
     ];
 
     /**
@@ -43,9 +47,19 @@ class Post extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('name')->sortable(),
-            Text::make('slug')->sortable(),
-            Text::make('content')->sortable(),
+            Images::make('Фото', 'main')->conversionOnIndexView('preview')
+                ->rules('required'),
+            Text::make('Заголовок', 'title')->displayUsing(function ($value) {
+                return Str::limit($value, 100);
+            })->hideFromDetail()->sortable(),
+            Text::make('Slug', 'slug')->onlyOnDetail()->sortable(),
+            Text::make('Описание', 'content')->onlyOnDetail()->sortable(),
+            DateTime::make('Создано', 'created_at')->displayUsing(fn($value) => $value?->format('d.m.Y H:i:s'))
+                ->exceptOnForms()
+                ->sortable(),
+            DateTime::make('Обновлено', 'updated_at')->displayUsing(fn($value) => $value?->format('d.m.Y H:i:s'))
+                ->exceptOnForms()
+                ->sortable(),
         ];
     }
 
@@ -87,5 +101,20 @@ class Post extends Resource
     public function actions(NovaRequest $request): array
     {
         return [];
+    }
+
+    public static function label()
+    {
+        return 'Сервис';
+    }
+
+    /**
+     * Get the displayable singular label of the resource.
+     *
+     * @return string
+     */
+    public static function singularLabel()
+    {
+        return 'Пост';
     }
 }

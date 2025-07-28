@@ -22,3 +22,7 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+__MACOSX/
+composer-setup.php
+composer.phar
+public_html

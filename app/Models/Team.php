@@ -8,8 +8,4 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 class Team extends Model
 {
 
-    public function image(): MorphOne
-    {
-        return $this->morphOne(Image::class, 'imageable');
-    }
 }

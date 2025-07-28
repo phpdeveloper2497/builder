@@ -37,8 +37,7 @@
                     <div class="logo">
                         <a href="{{ route('index') }}">
 {{--                            <h1>АЛГОРИТМ САН</h1>--}}
-                            <img src="{{ asset('img/Logo.png')}}" alt="Logo">
-                        </a>
+                            <img src="{{ asset('img/logo_ch.png') }}" alt="Logo">                        </a>
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-7 d-none d-lg-block">
@@ -99,13 +98,6 @@
                         <a href="{{ route('service') }}" class="nav-item nav-link">Услуга</a>
                         <a href="{{ route('team') }}" class="nav-item nav-link">Команда</a>
                         <a href="{{ route('index') }}" class="nav-item nav-link">Проект</a>
-{{--                        <div class="nav-item dropdown">--}}
-{{--                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Страницы</a>--}}
-{{--                            <div class="dropdown-menu">--}}
-{{--                                <a href="{{ route('blog') }}" class="dropdown-item">Страница блога</a>--}}
-{{--                                <a href="{{ route('single') }}" class="dropdown-item">Одна страница</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
                         <a href="{{ route('contact') }}" class="nav-item nav-link">Контакт</a>
                     </div>
                     <div class="ml-auto">
@@ -125,10 +117,10 @@
                 <div class="col-12">
                     <h2>Связаться с нами</h2>
                 </div>
-                <div class="col-12">
-                    <a href="">ГЛАВНЫЙ</a>
-                    <a href="">Связаться с нами</a>
-                </div>
+{{--                <div class="col-12">--}}
+{{--                    <a href="">ГЛАВНЫЙ</a>--}}
+{{--                    <a href="">Связаться с нами</a>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>
@@ -139,8 +131,7 @@
     <div class="contact wow fadeInUp">
         <div class="container">
             <div class="section-header text-center">
-                <p>Get In Touch</p>
-                <h2>For Any Query</h2>
+                <h2>Для любого запроса</h2>
             </div>
             <div class="row">
                 <div class="col-md-6">

@@ -99,13 +99,6 @@
                         <a href="{{ route('service') }}" class="nav-item nav-link">Услуга</a>
                         <a href="{{ route('team') }}" class="nav-item nav-link">Команда</a>
                         <a href="{{ route('index') }}" class="nav-item nav-link">Проект</a>
-{{--                        <div class="nav-item dropdown">--}}
-{{--                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Страницы</a>--}}
-{{--                            <div class="dropdown-menu">--}}
-{{--                                <a href="{{ route('blog') }}" class="dropdown-item">Страница блога</a>--}}
-{{--                                <a href="{{ route('single') }}" class="dropdown-item">Одна страница</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
                         <a href="{{ route('contact') }}" class="nav-item nav-link">Контакт</a>
                     </div>
                     <div class="ml-auto">
@@ -225,11 +218,9 @@
                     </div>
                     <div class="about-text">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                        </p>
+                            ООО « АЛГОРИТМ САН » — надёжная строительная компания с многолетним опытом работы в сфере жилого, коммерческого и промышленного строительства. Мы предлагаем полный цикл строительных услуг: от проектирования и согласования до сдачи объекта «под ключ».                        </p>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus. Aenean consectetur convallis porttitor. Aliquam interdum at lacus non blandit.
-                        </p>
+                            Наша команда — это квалифицированные инженеры, архитекторы и строители, которые работают по современным стандартам качества и безопасности. Используем только проверенные материалы и инновационные технологии, чтобы гарантировать долговечность и эстетичность каждого проекта.                        </p>
                         <a class="btn" href="">Узнать больше</a>
                     </div>
                 </div>
@@ -443,12 +434,13 @@
                         <div class="team-item">
 
                             <div class="team-img">
-                                <img src="{{ $user->image ? Storage::disk('public')->url($user->image->url) : '/images/default-user.png' }}" alt="User Photo">
+                                <img src="{{ $user->getFirstMediaUrl('main')}}" alt="User Photo">
 
                             </div>
                             <div class="team-text">
                                 <h2>{{ $user->first_name }}  {{$user->last_name}}</h2>
-                                <p>{{ $user->phone }}r</p>
+                                <p>{{ $user->email}}</p>
+                                <p>{{ $user->phone }}</p>
                             </div>
                             <div class="team-social">
                                 <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
@@ -479,60 +471,61 @@
                         <div class="card wow fadeInLeft" data-wow-delay="0.1s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseOne">
-                                    Lorem ipsum dolor sit amet?
+                                    Какие процессы в моей компании можно автоматизировать с помощью ИИ?
                                 </a>
                             </div>
                             <div id="collapseOne" class="collapse" data-parent="#accordion-1">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
                         <div class="card wow fadeInLeft" data-wow-delay="0.2s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseTwo">
-                                    Lorem ipsum dolor sit amet?
-                                </a>
+                                    Разрабатываете ли вы индивидуальные решения по автоматизации? </a>
                             </div>
                             <div id="collapseTwo" class="collapse" data-parent="#accordion-1">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
                         <div class="card wow fadeInLeft" data-wow-delay="0.3s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseThree">
-                                    Lorem ipsum dolor sit amet?
-                                </a>
+                                    Сколько времени занимает внедрение ИИ в бизнес-процессы? </a>
                             </div>
                             <div id="collapseThree" class="collapse" data-parent="#accordion-1">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
                         <div class="card wow fadeInLeft" data-wow-delay="0.4s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseFour">
-                                    Lorem ipsum dolor sit amet?
-                                </a>
+                                    Можно ли интегрировать ваши решения с нашей ERP/CRM системой? </a>
                             </div>
                             <div id="collapseFour" class="collapse" data-parent="#accordion-1">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
                         <div class="card wow fadeInLeft" data-wow-delay="0.5s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseFive">
-                                    Lorem ipsum dolor sit amet?
-                                </a>
+                                    Какие технологии ИИ вы используете в своих проектах? </a>
                             </div>
                             <div id="collapseFive" class="collapse" data-parent="#accordion-1">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
@@ -543,60 +536,79 @@
                         <div class="card wow fadeInRight" data-wow-delay="0.1s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseSix">
-                                    Lorem ipsum dolor sit amet?
+                                    Какое промышленное оборудование вы предлагаете?
+
                                 </a>
                             </div>
                             <div id="collapseSix" class="collapse" data-parent="#accordion-2">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
                         <div class="card wow fadeInRight" data-wow-delay="0.2s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseSeven">
-                                    Lorem ipsum dolor sit amet?
+                                    Есть ли у вас каталог оборудования и запасных частей?
                                 </a>
                             </div>
                             <div id="collapseSeven" class="collapse" data-parent="#accordion-2">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
                         <div class="card wow fadeInRight" data-wow-delay="0.3s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseEight">
-                                    Lorem ipsum dolor sit amet?
+                                    Осуществляете ли вы доставку и монтаж оборудования?
                                 </a>
                             </div>
                             <div id="collapseEight" class="collapse" data-parent="#accordion-2">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
                         <div class="card wow fadeInRight" data-wow-delay="0.4s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseNine">
-                                    Lorem ipsum dolor sit amet?
+                                    Как оформить оптовый заказ?
                                 </a>
                             </div>
                             <div id="collapseNine" class="collapse" data-parent="#accordion-2">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
                         <div class="card wow fadeInRight" data-wow-delay="0.5s">
                             <div class="card-header">
                                 <a class="card-link collapsed" data-toggle="collapse" href="#collapseTen">
-                                    Lorem ipsum dolor sit amet?
+                                    Предоставляется ли гарантия на технику и комплектующие?
                                 </a>
                             </div>
                             <div id="collapseTen" class="collapse" data-parent="#accordion-2">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card wow fadeInRight" data-wow-delay="0.5s">
+                            <div class="card-header">
+                                <a class="card-link collapsed" data-toggle="collapse" href="#collapseTen">
+                                    Какие условия для получения проектного финансирования?
+                                </a>
+                            </div>
+                            <div id="collapseTen" class="collapse" data-parent="#accordion-2">
+                                <div class="card-body">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
+                                    Curabitur facilisis ornare velit non.
                                 </div>
                             </div>
                         </div>
@@ -804,27 +816,6 @@
                 </div>
             </div>
         </div>
-       {{--        <div class="container footer-menu">--}}
-{{--            <div class="f-menu">--}}
-{{--                <a href="">Terms of use</a>--}}
-{{--                <a href="">Privacy policy</a>--}}
-{{--                <a href="">Cookies</a>--}}
-{{--                <a href="">Help</a>--}}
-{{--                <a href="">FQAs</a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-    {{--        <div class="container copyright">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-6">--}}
-{{--                    <p>&copy; <a href="#">Your Site Name</a>, All Right Reserved.</p>--}}
-{{--                </div>--}}
-{{--                <div class="col-md-6">--}}
-{{--                    <p>Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-    <!-- Footer End -->
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 </div>

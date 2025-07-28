@@ -2,11 +2,10 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Laravel\Nova\Auth\PasswordValidationRules;
-use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\MorphOne;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -22,7 +21,9 @@ class User extends Resource
      */
     public static $model = \App\Models\User::class;
 
-    protected $fillable = ['username', 'first_name','last_name','role','email', 'password'];
+//    public static $perPageOptions = [30];
+
+    protected $fillable = [ 'first_name','last_name','role','email', 'password','phone'];
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
@@ -36,7 +37,7 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'username', 'email',
+        'id', 'email', 'first_name', 'last_name', 'role','phone',
     ];
 
     /**
@@ -49,37 +50,38 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
-            Gravatar::make()->maxWidth(50),
+            Images::make('Фото', 'main')->conversionOnIndexView('preview')
+                ->rules('required'),
 
-            Text::make('First name')
+            Text::make('Имя','first_name')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Last name')
+            Text::make('Фамилия','last_name')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules('','required', 'max:255'),
 
-            Text::make('Username')
+            Text::make('Электронная почта','email')
                 ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
+                ->rules('required', 'email', 'max:255')
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
-            Text::make('phone')
+            Text::make('Телефон','phone')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Password::make('Password')
+            Password::make('Парол','password')
                 ->onlyOnForms()
                 ->creationRules($this->passwordRules())
                 ->updateRules($this->optionalPasswordRules()),
 
-            MorphOne::make('Image'),
-
+            DateTime::make('Создано', 'created_at')->displayUsing(fn($value) => $value?->format('d.m.Y H:i:s'))
+                ->exceptOnForms()
+                ->sortable(),
+            DateTime::make('Обновлено', 'updated_at')->displayUsing(fn($value) => $value?->format('d.m.Y H:i:s'))
+                ->exceptOnForms()
+                ->sortable(),
         ];
     }
 
@@ -121,6 +123,26 @@ class User extends Resource
     public function actions(NovaRequest $request): array
     {
         return [];
+    }
+
+    /**
+     * Get the displayable label of the resource.
+     *
+     * @return string
+     */
+    public static function label()
+    {
+        return 'Пользователь';
+    }
+
+    /**
+     * Get the displayable singular label of the resource.
+     *
+     * @return string
+     */
+    public static function singularLabel()
+    {
+        return 'Пользователь';
     }
 
 }
