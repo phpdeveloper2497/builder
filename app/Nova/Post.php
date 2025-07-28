@@ -48,7 +48,7 @@ class Post extends Resource
         return [
             ID::make()->sortable(),
             Images::make('Фото', 'main')->conversionOnIndexView('preview')
-                ->rules('required'),
+                ->rules('nullable'),
             Text::make('Заголовок', 'title')->displayUsing(function ($value) {
                 return Str::limit($value, 100);
             })->hideFromDetail()->sortable(),
