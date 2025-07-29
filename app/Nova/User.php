@@ -51,7 +51,7 @@ class User extends Resource
             ID::make()->sortable(),
 
             Images::make('Фото', 'main')->conversionOnIndexView('preview')
-                ->rules('required'),
+                ->rules('nullable'),
 
             Text::make('Имя','first_name')
                 ->sortable()
