@@ -22,6 +22,9 @@ class Post extends Resource
 //    public static $perPageOptions = [30];
 
     /**
+     *
+     *
+     * zz
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
@@ -52,8 +55,8 @@ class Post extends Resource
             Text::make('Заголовок', 'title')->displayUsing(function ($value) {
                 return Str::limit($value, 100);
             })->hideFromDetail()->sortable(),
-            Text::make('Slug', 'slug')->onlyOnDetail()->sortable(),
-            Text::make('Описание', 'content')->onlyOnDetail()->sortable(),
+//            Text::make('Slug', 'slug')->sortable(),
+            Text::make('Описание', 'content')->sortable(),
             DateTime::make('Создано', 'created_at')->displayUsing(fn($value) => $value?->format('d.m.Y H:i:s'))
                 ->exceptOnForms()
                 ->sortable(),
@@ -115,6 +118,6 @@ class Post extends Resource
      */
     public static function singularLabel()
     {
-        return 'Пост';
+        return 'Сервис';
     }
 }
