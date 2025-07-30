@@ -98,14 +98,7 @@
                         <a href="{{ route('about') }}" class="nav-item nav-link">О нас</a>
                         <a href="{{ route('service') }}" class="nav-item nav-link">Услуга</a>
                         <a href="{{ route('team') }}" class="nav-item nav-link">Команда</a>
-                        <a href="{{ route('index') }}" class="nav-item nav-link">Проект</a>
-{{--                        <div class="nav-item dropdown">--}}
-{{--                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Страницы</a>--}}
-{{--                            <div class="dropdown-menu">--}}
-{{--                                <a href="{{ route('blog') }}" class="dropdown-item">Страница блога</a>--}}
-{{--                                <a href="{{ route('single') }}" class="dropdown-item">Одна страница</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        <a href="{{ route('portfolio') }}" class="nav-item nav-link">Проект</a>
                         <a href="{{ route('contact') }}" class="nav-item nav-link">Контакт</a>
                     </div>
                     <div class="ml-auto">
@@ -123,11 +116,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2>Our Проекты</h2>
-                </div>
-                <div class="col-12">
-                    <a href="">ГЛАВНЫЙ</a>
-                    <a href="">Наши Проекты</a>
+                    <h2>Наш проекты</h2>
                 </div>
             </div>
         </div>
@@ -139,122 +128,49 @@
     <div class="portfolio">
         <div class="container">
             <div class="section-header text-center">
-                <p>Our Проекты</p>
-                <h2>Visit Our Проекты</h2>
+                <h2>Посетите наши проекты</h2>
             </div>
             <div class="row">
                 <div class="col-12">
                     <ul id="portfolio-flters">
-                        <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".first">Complete</li>
-                        <li data-filter=".second">Running</li>
-                        <li data-filter=".third">Upcoming</li>
+                        <li data-filter="*" class="filter-active">Все</li>
+                        <li data-filter=".first">Завершенные</li>
+                        <li data-filter=".second">В процессе</li>
+                        <li data-filter=".third">Предстоящие</li>
                     </ul>
                 </div>
             </div>
             <div class="row portfolio-container">
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="portfolio-warp">
-                        <div class="portfolio-img">
-                            <img src="img/portfolio-1.jpg" alt="Image">
-                            <div class="portfolio-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet elit. Phasel nec pretium mi. Curabit facilis ornare velit non. Aliqu metus tortor, auctor id gravi condime, viverra quis sem.
-                                </p>
+                @foreach($projects as $key => $project)
+                    @php
+                        // Statusga asoslangan classlar — agar sizda 3ta status bo‘lsa
+                        $statusClassMap = [
+                            1 => 'first',
+                            2 => 'second',
+                            3 => 'third'
+                        ];
+                        $statusClass = $statusClassMap[$project->status_id] ?? 'first';
+                        $delay = '0.' . ($key + 1) . 's';
+                    @endphp
+
+                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item {{ $statusClass }} wow fadeInUp" data-wow-delay="{{ $delay }}">
+                        <div class="portfolio-warp">
+                            <div class="portfolio-img">
+                                <img src="{{ $project->getFirstMediaUrl('main') ?: asset('img/default.jpg') }}" alt="Image">
+                                <div class="portfolio-overlay">
+                                    <p>{{ $project->description }}</p>
+                                </div>
+                            </div>
+                            <div class="portfolio-text">
+                                <h3>{{ $project->name }}</h3>
+                                <a class="btn" href="{{ $project->getFirstMediaUrl('main') ?: asset('img/default.jpg') }}" data-lightbox="portfolio">+</a>
                             </div>
                         </div>
-                        <div class="portfolio-text">
-                            <h3>Project Name</h3>
-                            <a class="btn" href="img/portfolio-1.jpg" data-lightbox="portfolio">+</a>
-                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item second wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="portfolio-warp">
-                        <div class="portfolio-img">
-                            <img src="img/portfolio-2.jpg" alt="Image">
-                            <div class="portfolio-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet elit. Phasel nec pretium mi. Curabit facilis ornare velit non. Aliqu metus tortor, auctor id gravi condime, viverra quis sem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="portfolio-text">
-                            <h3>Project Name</h3>
-                            <a class="btn" href="img/portfolio-2.jpg" data-lightbox="portfolio">+</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item third wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="portfolio-warp">
-                        <div class="portfolio-img">
-                            <img src="img/portfolio-3.jpg" alt="Image">
-                            <div class="portfolio-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet elit. Phasel nec pretium mi. Curabit facilis ornare velit non. Aliqu metus tortor, auctor id gravi condime, viverra quis sem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="portfolio-text">
-                            <h3>Project Name</h3>
-                            <a class="btn" href="img/portfolio-3.jpg" data-lightbox="portfolio">+</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item first wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="portfolio-warp">
-                        <div class="portfolio-img">
-                            <img src="img/portfolio-4.jpg" alt="Image">
-                            <div class="portfolio-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet elit. Phasel nec pretium mi. Curabit facilis ornare velit non. Aliqu metus tortor, auctor id gravi condime, viverra quis sem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="portfolio-text">
-                            <h3>Project Name</h3>
-                            <a class="btn" href="img/portfolio-4.jpg" data-lightbox="portfolio">+</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item second wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="portfolio-warp">
-                        <div class="portfolio-img">
-                            <img src="img/portfolio-5.jpg" alt="Image">
-                            <div class="portfolio-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet elit. Phasel nec pretium mi. Curabit facilis ornare velit non. Aliqu metus tortor, auctor id gravi condime, viverra quis sem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="portfolio-text">
-                            <h3>Project Name</h3>
-                            <a class="btn" href="img/portfolio-5.jpg" data-lightbox="portfolio">+</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item third wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="portfolio-warp">
-                        <div class="portfolio-img">
-                            <img src="img/portfolio-6.jpg" alt="Image">
-                            <div class="portfolio-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet elit. Phasel nec pretium mi. Curabit facilis ornare velit non. Aliqu metus tortor, auctor id gravi condime, viverra quis sem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="portfolio-text">
-                            <h3>Project Name</h3>
-                            <a class="btn" href="img/portfolio-6.jpg" data-lightbox="portfolio">+</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
-            <div class="row">
-                <div class="col-12 load-more">
-                    <a class="btn" href="#">Load More</a>
-                </div>
-            </div>
+
+
         </div>
     </div>
     <!-- Portfolio End -->
@@ -267,8 +183,9 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="footer-contact">
                         <h2>Контакты офиса</h2>
-                        <p><i class="fa fa-map-marker-alt"></i>129226, г Москва, ул
-Сельскохозяйственная, д. 17, к. 1,</p>
+                        <p><i class="fa fa-map-marker-alt"></i>
+                            129226, г Москва, ул Сельскохозяйственная, д. 17, к. 1,
+                        </p>
                         <p><i class="fa fa-phone-alt"></i>+7 (968) 533-46-760</p>
                         <p><i class="fa fa-envelope"></i>info@example.com</p>
                         <div class="footer-social">
@@ -314,31 +231,11 @@
                 </div>
             </div>
         </div>
-       {{--        <div class="container footer-menu">--}}
-{{--            <div class="f-menu">--}}
-{{--                <a href="">Terms of use</a>--}}
-{{--                <a href="">Privacy policy</a>--}}
-{{--                <a href="">Cookies</a>--}}
-{{--                <a href="">Help</a>--}}
-{{--                <a href="">FQAs</a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-    {{--        <div class="container copyright">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-6">--}}
-{{--                    <p>&copy; <a href="#">Your Site Name</a>, All Right Reserved.</p>--}}
-{{--                </div>--}}
-{{--                <div class="col-md-6">--}}
-{{--                    <p>Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-    <!-- Footer End -->
+
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 </div>
-
+</div>
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -350,6 +247,30 @@
 <script src="lib/waypoints/waypoints.min.js"></script>
 <script src="lib/counterup/counterup.min.js"></script>
 <script src="lib/slick/slick.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const filters = document.querySelectorAll('#portfolio-flters li');
+        const items = document.querySelectorAll('.portfolio-item');
+
+        filters.forEach(filter => {
+            filter.addEventListener('click', function() {
+                filters.forEach(f => f.classList.remove('filter-active'));
+                this.classList.add('filter-active');
+
+                const filterValue = this.getAttribute('data-filter');
+                items.forEach(item => {
+                    if (filterValue === '*' || item.classList.contains(filterValue.substring(1))) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>
+
 
 <!-- Template Javascript -->
 <script src="{{ asset('js/main.js') }}"></script>

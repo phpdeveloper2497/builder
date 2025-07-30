@@ -98,7 +98,7 @@
                         <a href="{{ route('about') }}" class="nav-item nav-link">О нас</a>
                         <a href="{{ route('service') }}" class="nav-item nav-link">Услуга</a>
                         <a href="{{ route('team') }}" class="nav-item nav-link">Команда</a>
-                        <a href="{{ route('index') }}" class="nav-item nav-link">Проект</a>
+                        <a href="{{ route('portfolio') }}" class="nav-item nav-link">Проекты</a>
                         <a href="{{ route('contact') }}" class="nav-item nav-link">Контакт</a>
                     </div>
                     <div class="ml-auto">
@@ -110,52 +110,36 @@
     </div>
     <!-- Nav Bar End -->
 
-
     <!-- Carousel Start -->
     <div id="carousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel" data-slide-to="1"></li>
-            <li data-target="#carousel" data-slide-to="2"></li>
+            @foreach($carousels as $index => $item)
+                <li data-target="#carousel" data-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></li>
+            @endforeach
         </ol>
+
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="img/carousel-1.jpg" alt="Carousel Image">
-                <div class="carousel-caption">
-                    <p class="animated fadeInRight">Мы профессионалы</p>
-                    <h1 class="animated fadeInLeft">Для проекта вашей мечты</h1>
-                    <a class="btn animated fadeInUp" >ПОЛУЧИТЬ ЦЕНУ</a>
+            @foreach($carousels as $index => $item)
+                <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                    <img src="{{ $item->getFirstMediaUrl('main')  }}" alt="Carousel Image">
+                    <div class="carousel-caption">
+                        <p class="animated fadeInRight">{{ $item->title }}</p>
+                        <h1 class="animated fadeInLeft">{{ $item->description }}</h1>
+                    </div>
                 </div>
-            </div>
-
-            <div class="carousel-item">
-                <img src="img/carousel-2.jpg" alt="Carousel Image">
-                <div class="carousel-caption">
-                    <p class="animated fadeInRight">Профессиональный строитель</p>
-                    <h1 class="animated fadeInLeft">Мы строим ваш дом</h1>
-                    <a class="btn animated fadeInUp" >ПОЛУЧИТЬ ЦЕНУ</a>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <img src="img/carousel-3.jpg" alt="Carousel Image">
-                <div class="carousel-caption">
-                    <p class="animated fadeInRight">Нам доверяют</p>
-                    <h1 class="animated fadeInLeft">Для дома вашей мечты</h1>
-                    <a class="btn animated fadeInUp" >ПОЛУЧИТЬ ЦЕНУ</a>
-                </div>
-            </div>
+            @endforeach
         </div>
 
         <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
+            <span class="sr-only">Предыдущий</span>
         </a>
         <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
+            <span class="sr-only">Следующий</span>
         </a>
     </div>
+
     <!-- Carousel End -->
 
 
@@ -204,28 +188,29 @@
 
     <!-- About Start -->
     <div class="about wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 col-md-6">
-                    <div class="about-img">
-                        <img src="img/about.jpg" alt="Image">
+
+        @foreach($abouts as $about)
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-6">
+                        <div class="about-img">
+                            <img src="{{ $about->getFirstMediaUrl('main') }}" alt="Image">
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-7 col-md-6">
-                    <div class="section-header text-left">
-                        <p>Добро пожаловать в АЛГОРИТМ САН</p>
-                        <h2>25 Years Experience</h2>
-                    </div>
-                    <div class="about-text">
-                        <p>
-                            ООО « АЛГОРИТМ САН » — надёжная строительная компания с многолетним опытом работы в сфере жилого, коммерческого и промышленного строительства. Мы предлагаем полный цикл строительных услуг: от проектирования и согласования до сдачи объекта «под ключ».                        </p>
-                        <p>
-                            Наша команда — это квалифицированные инженеры, архитекторы и строители, которые работают по современным стандартам качества и безопасности. Используем только проверенные материалы и инновационные технологии, чтобы гарантировать долговечность и эстетичность каждого проекта.                        </p>
-                        <a class="btn" href="">Узнать больше</a>
+                    <div class="col-lg-7 col-md-6">
+                        <div class="section-header text-left">
+                            <p>Добро пожаловать в АЛГОРИТМ САН</p>
+                            <h2> {{ $about->title }}</h2>
+                        </div>
+                        <div class="about-text">
+                            <p>
+                            {{ $about->description }}
+                            <p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endforeach
     </div>
     <!-- About End -->
 
@@ -292,102 +277,26 @@
                 <h2>Мы предоставляем услуги</h2>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-1.jpg" alt="Image">
-                            <div class="service-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                                </p>
+                @foreach($posts as $post)
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="{{ $post->getFirstMediaUrl('main') }}" alt="Image">
+                                <div class="service-overlay">
+                                    <p>
+                                        {{ $post->content }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="service-text">
+                                <h3>{{ $post->title }}</h3>
+                                <a class="btn" href="{{ $post->getFirstMediaUrl('main')  }}"
+                                   data-lightbox="service">+</a>
                             </div>
                         </div>
-                        <div class="service-text">
-                            <h3>Строительство зданий</h3>
-                            <a class="btn" href="img/service-1.jpg" data-lightbox="service">+</a>
-                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-2.jpg" alt="Image">
-                            <div class="service-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="service-text">
-                            <h3>Ремонт дома</h3>
-                            <a class="btn" href="img/service-2.jpg" data-lightbox="service">+</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-3.jpg" alt="Image">
-                            <div class="service-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="service-text">
-                            <h3>Архитектура и дизайн</h3>
-                            <a class="btn" href="img/service-3.jpg" data-lightbox="service">+</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-4.jpg" alt="Image">
-                            <div class="service-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="service-text">
-                            <h3>Дизайн интерьера</h3>
-                            <a class="btn" href="img/service-4.jpg" data-lightbox="service">+</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-5.jpg" alt="Image">
-                            <div class="service-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="service-text">
-                            <h3>Fixing & Support</h3>
-                            <a class="btn" href="img/service-5.jpg" data-lightbox="service">+</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-6.jpg" alt="Image">
-                            <div class="service-overlay">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="service-text">
-                            <h3>Рисование</h3>
-                            <a class="btn" href="img/service-6.jpg" data-lightbox="service">+</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </div>
@@ -621,70 +530,70 @@
 
 
     <!-- Отзыв Start -->
-    <div class="testimonial wow fadeIn" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="testimonial-slider-nav">
-                        <div class="slider-nav"><img src="img/testimonial-1.jpg" alt="Отзыв"></div>
-                        <div class="slider-nav"><img src="img/testimonial-2.jpg" alt="Отзыв"></div>
-                        <div class="slider-nav"><img src="img/testimonial-3.jpg" alt="Отзыв"></div>
-                        <div class="slider-nav"><img src="img/testimonial-4.jpg" alt="Отзыв"></div>
-                        <div class="slider-nav"><img src="img/testimonial-1.jpg" alt="Отзыв"></div>
-                        <div class="slider-nav"><img src="img/testimonial-2.jpg" alt="Отзыв"></div>
-                        <div class="slider-nav"><img src="img/testimonial-3.jpg" alt="Отзыв"></div>
-                        <div class="slider-nav"><img src="img/testimonial-4.jpg" alt="Отзыв"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="testimonial-slider">
-                        <div class="slider-item">
-                            <h3>Customer Name</h3>
-                            <h4>profession</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
-                        </div>
-                        <div class="slider-item">
-                            <h3>Customer Name</h3>
-                            <h4>profession</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
-                        </div>
-                        <div class="slider-item">
-                            <h3>Customer Name</h3>
-                            <h4>profession</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
-                        </div>
-                        <div class="slider-item">
-                            <h3>Customer Name</h3>
-                            <h4>profession</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
-                        </div>
-                        <div class="slider-item">
-                            <h3>Customer Name</h3>
-                            <h4>profession</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
-                        </div>
-                        <div class="slider-item">
-                            <h3>Customer Name</h3>
-                            <h4>profession</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
-                        </div>
-                        <div class="slider-item">
-                            <h3>Customer Name</h3>
-                            <h4>profession</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
-                        </div>
-                        <div class="slider-item">
-                            <h3>Customer Name</h3>
-                            <h4>profession</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="testimonial wow fadeIn" data-wow-delay="0.1s">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-12">--}}
+{{--                    <div class="testimonial-slider-nav">--}}
+{{--                        <div class="slider-nav"><img src="img/testimonial-1.jpg" alt="Отзыв"></div>--}}
+{{--                        <div class="slider-nav"><img src="img/testimonial-2.jpg" alt="Отзыв"></div>--}}
+{{--                        <div class="slider-nav"><img src="img/testimonial-3.jpg" alt="Отзыв"></div>--}}
+{{--                        <div class="slider-nav"><img src="img/testimonial-4.jpg" alt="Отзыв"></div>--}}
+{{--                        <div class="slider-nav"><img src="img/testimonial-1.jpg" alt="Отзыв"></div>--}}
+{{--                        <div class="slider-nav"><img src="img/testimonial-2.jpg" alt="Отзыв"></div>--}}
+{{--                        <div class="slider-nav"><img src="img/testimonial-3.jpg" alt="Отзыв"></div>--}}
+{{--                        <div class="slider-nav"><img src="img/testimonial-4.jpg" alt="Отзыв"></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-12">--}}
+{{--                    <div class="testimonial-slider">--}}
+{{--                        <div class="slider-item">--}}
+{{--                            <h3>Customer Name</h3>--}}
+{{--                            <h4>profession</h4>--}}
+{{--                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="slider-item">--}}
+{{--                            <h3>Customer Name</h3>--}}
+{{--                            <h4>profession</h4>--}}
+{{--                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="slider-item">--}}
+{{--                            <h3>Customer Name</h3>--}}
+{{--                            <h4>profession</h4>--}}
+{{--                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="slider-item">--}}
+{{--                            <h3>Customer Name</h3>--}}
+{{--                            <h4>profession</h4>--}}
+{{--                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="slider-item">--}}
+{{--                            <h3>Customer Name</h3>--}}
+{{--                            <h4>profession</h4>--}}
+{{--                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="slider-item">--}}
+{{--                            <h3>Customer Name</h3>--}}
+{{--                            <h4>profession</h4>--}}
+{{--                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="slider-item">--}}
+{{--                            <h3>Customer Name</h3>--}}
+{{--                            <h4>profession</h4>--}}
+{{--                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="slider-item">--}}
+{{--                            <h3>Customer Name</h3>--}}
+{{--                            <h4>profession</h4>--}}
+{{--                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <!-- Отзыв End -->
 
 

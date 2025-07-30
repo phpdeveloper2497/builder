@@ -97,7 +97,7 @@
                         <a href="{{ route('about') }}" class="nav-item nav-link">О нас</a>
                         <a href="{{ route('service') }}" class="nav-item nav-link">Услуга</a>
                         <a href="{{ route('team') }}" class="nav-item nav-link">Команда</a>
-                        <a href="{{ route('index') }}" class="nav-item nav-link">Проект</a>
+                        <a href="{{ route('portfolio') }}" class="nav-item nav-link">Проекты</a>
                         <a href="{{ route('contact') }}" class="nav-item nav-link">Контакт</a>
                     </div>
                     <div class="ml-auto">
@@ -117,10 +117,6 @@
                 <div class="col-12">
                     <h2>Связаться с нами</h2>
                 </div>
-{{--                <div class="col-12">--}}
-{{--                    <a href="">ГЛАВНЫЙ</a>--}}
-{{--                    <a href="">Связаться с нами</a>--}}
-{{--                </div>--}}
             </div>
         </div>
     </div>

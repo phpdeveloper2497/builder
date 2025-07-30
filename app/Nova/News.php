@@ -45,8 +45,8 @@ class News extends Resource
             ID::make()->sortable(),
              Images::make('Фото', 'main')->conversionOnIndexView('preview')
                 ->rules('required'),
-            Text::make('Описание','description')->sortable(),
             Text::make('Заголовок','title')->sortable(),
+            Text::make('Описание','description')->sortable(),
         ];
     }
 
@@ -88,5 +88,20 @@ class News extends Resource
     public function actions(NovaRequest $request): array
     {
         return [];
+    }
+
+    public static function label()
+    {
+        return 'Новости';
+    }
+
+    /**
+     * Get the displayable singular label of the resource.
+     *
+     * @return string
+     */
+    public static function singularLabel()
+    {
+        return 'Новости';
     }
 }

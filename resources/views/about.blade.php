@@ -98,7 +98,7 @@
                         <a href="{{ route('about') }}" class="nav-item nav-link">О нас</a>
                         <a href="{{ route('service') }}" class="nav-item nav-link">Услуга</a>
                         <a href="{{ route('team') }}" class="nav-item nav-link">Команда</a>
-                        <a href="{{ route('index') }}" class="nav-item nav-link">Проект</a>
+                        <a href="{{ route('portfolio') }}" class="nav-item nav-link">Проекты</a>
                         <a href="{{ route('contact') }}" class="nav-item nav-link">Контакт</a>
                     </div>
                     <div class="ml-auto">
@@ -118,10 +118,6 @@
                 <div class="col-12">
                     <h2>О нас</h2>
                 </div>
-{{--                <div class="col-12">--}}
-{{--                    <a href="">ГЛАВНЫЙ</a>--}}
-{{--                    <a href="">О нас</a>--}}
-{{--                </div>--}}
             </div>
         </div>
     </div>
@@ -130,28 +126,29 @@
 
     <!-- About Start -->
     <div class="about wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 col-md-6">
-                    <div class="about-img">
-                        <img src="img/about.jpg" alt="Image">
+
+        @foreach($abouts as $about)
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-6">
+                        <div class="about-img">
+                            <img src="{{ $about->getFirstMediaUrl('main') }}" alt="Image">
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-7 col-md-6">
-                    <div class="section-header text-left">
-                        <p>Добро пожаловать в АЛГОРИТМ САН</p>
-                        <h2>25 Years Experience</h2>
-                    </div>
-                    <div class="about-text">
-                        <p>
-                            ООО « АЛГОРИТМ САН » — надёжная строительная компания с многолетним опытом работы в сфере жилого, коммерческого и промышленного строительства. Мы предлагаем полный цикл строительных услуг: от проектирования и согласования до сдачи объекта «под ключ».                        </p>
-                        <p>
-                            Наша команда — это квалифицированные инженеры, архитекторы и строители, которые работают по современным стандартам качества и безопасности. Используем только проверенные материалы и инновационные технологии, чтобы гарантировать долговечность и эстетичность каждого проекта.                        </p>
-                        <a class="btn" href="">Узнать больше</a>
+                    <div class="col-lg-7 col-md-6">
+                        <div class="section-header text-left">
+                            <p>Добро пожаловать в АЛГОРИТМ САН</p>
+                            <h2> {{ $about->title }}</h2>
+                        </div>
+                        <div class="about-text">
+                            <p>
+                            {{ $about->description }}
+                            <p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endforeach
     </div>
     <!-- About End -->
 
@@ -228,8 +225,7 @@
                             </div>
                             <div id="collapseOne" class="collapse" data-parent="#accordion-1">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
-                                    Curabitur facilisis ornare velit non.
+
                                 </div>
                             </div>
                         </div>
@@ -240,8 +236,7 @@
                             </div>
                             <div id="collapseTwo" class="collapse" data-parent="#accordion-1">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
-                                    Curabitur facilisis ornare velit non.
+
                                 </div>
                             </div>
                         </div>
@@ -252,8 +247,7 @@
                             </div>
                             <div id="collapseThree" class="collapse" data-parent="#accordion-1">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
-                                    Curabitur facilisis ornare velit non.
+
                                 </div>
                             </div>
                         </div>
@@ -264,8 +258,7 @@
                             </div>
                             <div id="collapseFour" class="collapse" data-parent="#accordion-1">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
-                                    Curabitur facilisis ornare velit non.
+
                                 </div>
                             </div>
                         </div>
@@ -276,8 +269,7 @@
                             </div>
                             <div id="collapseFive" class="collapse" data-parent="#accordion-1">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
-                                    Curabitur facilisis ornare velit non.
+
                                 </div>
                             </div>
                         </div>
@@ -294,8 +286,7 @@
                             </div>
                             <div id="collapseSix" class="collapse" data-parent="#accordion-2">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
-                                    Curabitur facilisis ornare velit non.
+
                                 </div>
                             </div>
                         </div>
@@ -320,8 +311,7 @@
                             </div>
                             <div id="collapseEight" class="collapse" data-parent="#accordion-2">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
-                                    Curabitur facilisis ornare velit non.
+
                                 </div>
                             </div>
                         </div>
@@ -333,8 +323,7 @@
                             </div>
                             <div id="collapseNine" class="collapse" data-parent="#accordion-2">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
-                                    Curabitur facilisis ornare velit non.
+
                                 </div>
                             </div>
                         </div>
@@ -346,8 +335,7 @@
                             </div>
                             <div id="collapseTen" class="collapse" data-parent="#accordion-2">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
-                                    Curabitur facilisis ornare velit non.
+
                                 </div>
                             </div>
                         </div>
@@ -359,8 +347,7 @@
                             </div>
                             <div id="collapseTen" class="collapse" data-parent="#accordion-2">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
-                                    Curabitur facilisis ornare velit non.
+
                                 </div>
                             </div>
                         </div>
@@ -426,17 +413,6 @@
                 </div>
             </div>
         </div>
-       {{--        <div class="container footer-menu">--}}
-{{--            <div class="f-menu">--}}
-{{--                <a href="">Terms of use</a>--}}
-{{--                <a href="">Privacy policy</a>--}}
-{{--                <a href="">Cookies</a>--}}
-{{--                <a href="">Help</a>--}}
-{{--                <a href="">FQAs</a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-    <!-- Footer End -->
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 </div>
