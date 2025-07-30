@@ -94,15 +94,16 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                        <a href="{{ route('index') }}" class="nav-item nav-link active">ГЛАВНЫЙ</a>
-                        <a href="{{ route('about') }}" class="nav-item nav-link">О нас</a>
-                        <a href="{{ route('service') }}" class="nav-item nav-link">Услуга</a>
-                        <a href="{{ route('team') }}" class="nav-item nav-link">Команда</a>
-                        <a href="{{ route('portfolio') }}" class="nav-item nav-link">Проекты</a>
-                        <a href="{{ route('contact') }}" class="nav-item nav-link">Контакт</a>
+                        <a href="{{ route('index') }}" class="nav-item nav-link {{ request()->routeIs('index') ? 'active' : '' }}">ГЛАВНЫЙ</a>
+                        <a href="{{ route('about') }}" class="nav-item nav-link {{ request()->routeIs('about') ? 'active' : '' }}">О нас</a>
+                        <a href="{{ route('service') }}" class="nav-item nav-link {{ request()->routeIs('service') ? 'active' : '' }}">Услуга</a>
+                        <a href="{{ route('team') }}" class="nav-item nav-link {{ request()->routeIs('team') ? 'active' : '' }}">Команда</a>
+                        <a href="{{ route('portfolio') }}" class="nav-item nav-link {{ request()->routeIs('portfolio') ? 'active' : '' }}">Проекты</a>
+                        <a href="{{ route('contact') }}" class="nav-item nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">Контакт</a>
+
                     </div>
                     <div class="ml-auto">
-                        <a class="btn" href="#">Получить предложение</a>
+{{--                        <a class="btn" href="#">Получить предложение</a>--}}
                     </div>
                 </div>
             </nav>

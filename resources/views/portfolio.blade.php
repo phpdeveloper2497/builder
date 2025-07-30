@@ -102,7 +102,7 @@
                         <a href="{{ route('contact') }}" class="nav-item nav-link">Контакт</a>
                     </div>
                     <div class="ml-auto">
-                        <a class="btn" href="#">Получить предложение</a>
+{{--                        <a class="btn" href="#">Получить предложение</a>--}}
                     </div>
                 </div>
             </nav>
