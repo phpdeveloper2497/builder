@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -48,6 +49,9 @@ class Notification extends Resource
             Text::make('сообщение','message')->displayUsing(function ($value) {
                 return Str::limit($value, 50);
             })->hideFromDetail()->sortable(),
+            DateTime::make('Создано', 'created_at')->displayUsing(fn($value) => $value?->format('d.m.Y H:i:s'))
+                ->exceptOnForms()
+                ->sortable(),
         ];
     }
 

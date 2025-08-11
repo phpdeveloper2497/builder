@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\NotificationRequest;
 use App\Models\Notification;
+use App\Notifications\TelegramContact;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
@@ -30,12 +31,14 @@ class NotificationController extends Controller
     public function store(NotificationRequest $request)
     {
 
-        Notification::create([
+        $notif = Notification::create([
             'name' => $request->name,
             'email' => $request->email,
             'title' => $request->title,
             'message' => $request->message,
         ]);
+
+        (new TelegramContact())->sendToTelegram($notif);
 
         return redirect()->route('notification.create')->with('success', 'Сообщение успешно отправлено!');
     }
